@@ -54,11 +54,16 @@ public class PersonController {
         return ResponseEntity.ok(PersonRestMapper.INSTANCE.mapToPersonListResponse(this.personServicePort.getAllPersons()));
     }
 
+    //(HECHO POR MI) (NO FUNCIONA)    ESTUDIAR EL CASO
+//    @GetMapping("get/{id}")
+//    public ResponseEntity<PersonResponse> getById(Long id) throws BusinessException{
+//        return ResponseEntity.ok(PersonRestMapper.INSTANCE.toPersonResponse(this.personServicePort.getById(id)));
+//
+//    }
+
     @GetMapping("get/{id}")
-    public ResponseEntity<PersonResponse> getById(@PathVariable long id)
-            throws BusinessException {
-        PersonResponse personResponse = PersonRestMapper.INSTANCE.toPersonResponse(
-                personServicePort.getById(id));
+    public ResponseEntity<PersonResponse> getById(@PathVariable long id) throws BusinessException {
+        PersonResponse personResponse = PersonRestMapper.INSTANCE.toPersonResponse(personServicePort.getById(id));
         return ResponseEntity.ok(personResponse);
 
     }

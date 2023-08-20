@@ -29,6 +29,14 @@ public class PersonJpaAdapter implements PersonPersistencePort {
         return PersonMapper.INSTANCE.toPersonModel(personSaved);   //Cómo es que llama a un "interface"?? o instancia de interfaz??
     }
 
+    //(HECHO POR MI) (NO FUNCIONA)    ESTUDIAR EL CASO
+//    @Override
+//    public PersonModel updatePerson(PersonModel personModel, Long id) {
+//        PersonEntity personExist = PersonMapper.INSTANCE.toPersonEntity(this.getById(id));
+//        PersonModel personModify = PersonMapper.INSTANCE.toPersonModel(personExist);
+//        return this.addPerson(personModify);
+//    }
+
     @Override
     public PersonModel updatePerson(PersonModel personModel) {
         return this.addPerson(personModel);
@@ -51,4 +59,8 @@ public class PersonJpaAdapter implements PersonPersistencePort {
         return personEntity.map(PersonMapper.INSTANCE::toPersonModel)
                 .orElse(null);
     }
+
+
+
+
 }
